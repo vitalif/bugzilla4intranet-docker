@@ -1,0 +1,4 @@
+$answer{'ADMIN_EMAIL'} = 'admin@bugzilla.4intra.net';
+$answer{'ADMIN_PASSWORD'} = 'bugzilla';
+$answer{'ADMIN_REALNAME'} = 'Bugzilla4Intranet admin';
+$answer{'NO_PAUSE'} = 1;

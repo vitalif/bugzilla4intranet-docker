@@ -17,19 +17,18 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::=
     libsoap-lite-perl libxmlrpc-lite-perl libjson-rpc-perl libjson-xs-perl libtext-csv-perl libhtml-strip-perl \
     libtext-csv-xs-perl libspreadsheet-parseexcel-perl libspreadsheet-xlsx-perl \
     liblingua-stem-snowball-perl libtheschwartz-perl \
-    libdaemon-generic-perl libhttp-server-simple-perl libnet-server-perl
+    libdaemon-generic-perl libhttp-server-simple-perl libnet-server-perl build-essential
 
 ADD etc /etc
-ADD home /home
-ADD usr /usr
 
 RUN service mysql start && echo "CREATE DATABASE bugzilla; \
     GRANT ALL PRIVILEGES ON bugzilla.* TO bugzilla@localhost IDENTIFIED BY 'bugzilla'; \
     FLUSH PRIVILEGES;" | mysql --defaults-file=/etc/mysql/debian.cnf
 
-RUN cpan CGI Math::Random::Secure Sys::Sendfile Date::Parse Text::Wrap MIME::Parser
+RUN cpan Module::Build CGI Math::Random::Secure Sys::Sendfile Date::Parse Text::Wrap MIME::Parser
 
-RUN mv /var/lib/mysql /home/data/mysql && \
+RUN mkdir /home/data && \
+    mv /var/lib/mysql /home/data/mysql && \
     mv /var/lib/sphinxsearch /home/data/sphinxsearch && \
     ln -s /home/data/mysql /var/lib/mysql && \
     ln -s /home/data/sphinxsearch /var/lib/sphinxsearch && \
@@ -47,7 +46,13 @@ RUN mv /var/lib/mysql /home/data/mysql && \
     chown www-data:www-data /home/data/bugzilla && \
     ln -s /home/data/bugzilla data
 
-ADD localconfig /home/bugzilla/localconfig
+ADD home /home
+
+RUN service sphinxsearch start && \
+    service mysql start && \
+    cd /home/bugzilla && \
+    ./checksetup.pl answers && \
+    rm answers
 
 # Update image incrementally
 
