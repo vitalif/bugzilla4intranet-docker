@@ -14,6 +14,9 @@ with 'bugzilla' password and configure your Bugzilla.
 Please note that you should probably use SMTP to send email from inside of a
 Docker container.
 
+You can take example nginx configuration for proxying Bugzilla4Intranet from
+this repo: etc/nginx/sites-available/bugzilla4intranet
+
 # Docker cheatsheet
 
 Some basic commands to work with the resulting container:

@@ -1,0 +1,24 @@
+# Example configuration for proxying Bugzilla4Intranet
+
+server {
+    listen 80 default;
+    server_name bugzilla4intranet.local;
+    root /home/bugzilla;
+    include global_params;
+
+    location ~* ^/*(.*\.(js|css|jpg|jpeg|svg|png|gif|swf|jar|ico|woff|ttf)$) {
+        alias /home/bugzilla/$1;
+        add_header Cache-Control must-revalidate;
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:8157;
+        include proxy_params;
+    }
+    location /buglist.cgi {
+        alias /home/bugzilla/buglist.cgi;
+        proxy_pass http://127.0.0.1:8157;
+        include proxy_params;
+        proxy_buffering off;
+    }
+}
