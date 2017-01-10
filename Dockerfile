@@ -6,7 +6,7 @@ ADD etc/apt/apt.conf /etc/apt/apt.conf
 ADD etc/locale.gen /etc/locale.gen
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" \
-    -o Dpkg::Options::="--force-confold" install -y wget git zip unzip poppler-utils \
+    -o Dpkg::Options::="--force-confold" install -y wget git zip unzip poppler-utils locales procps \
     graphviz patchutils sphinxsearch mc nginx perl mariadb-server libreoffice libdbi-perl libdatetime-perl libemail-address-perl \
     libtemplate-perl libjson-perl libemail-mime-perl libtest-taint-perl \
     libxml-twig-perl libtext-tabulardisplay-perl libemail-sender-perl \

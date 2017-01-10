@@ -85,7 +85,7 @@ $sphinx_sock = '/var/run/sphinxsearch/searchd.sock';
 
 # To use MySQL Sphinx Storage Engine (bundled with MariaDB), specify
 # a non-zero port on which Sphinx is listening for non-SphinxQL requests
-$sphinxse_port = 3112;
+$sphinxse_port = 0;
 
 # Should checksetup.pl try to verify that your database setup is correct?
 # (with some combinations of database servers/Perl modules/moonphase this
