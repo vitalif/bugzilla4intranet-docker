@@ -32,6 +32,7 @@ RUN mkdir /home/data && \
     mv /var/lib/sphinxsearch /home/data/sphinxsearch && \
     ln -s /home/data/mysql /var/lib/mysql && \
     ln -s /home/data/sphinxsearch /var/lib/sphinxsearch && \
+    rm /etc/nginx/sites-enabled/default && \
     mkdir /home/data/logs && \
     mv /var/log/nginx /home/data/logs && \
     ln -s /home/data/logs/nginx /var/log/nginx && \
@@ -56,7 +57,7 @@ RUN service sphinxsearch start && \
 
 # Update image incrementally
 
-# ADD bugzilla4intranet-version /etc/mediawiki4intranet-version
+# ADD bugzilla4intranet-version /etc/bugzilla4intranet-version
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" \
     -o Dpkg::Options::="--force-confold" dist-upgrade -y \

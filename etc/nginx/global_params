@@ -1,0 +1,3 @@
+location ~ /(\.(git|svn|bzr|hg)|CVS)/ {
+    deny all;
+}
