@@ -6,6 +6,7 @@ service sphinxsearch start
 service mysql start
 service bugzilla start
 service bugzilla-jobs start
+service cron start
 
 # Keep container running
 tail -fn0 /dev/null

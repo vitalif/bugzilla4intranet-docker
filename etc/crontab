@@ -1,0 +1,2 @@
+0  * * * *  www-data  cd /home/bugzilla && /usr/bin/perl -T /home/bugzilla/whine.pl
+0  5 * * *  www-data  cd /home/bugzilla && (./collectstats.pl -1 2>&1 | /usr/bin/pcregrep -v 'Subroutine Text::TabularDisplay::_column_length redefined|Subroutine Encode::MIME::Header::encode redefined|Wide character in print at' 1>&2)
