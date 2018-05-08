@@ -17,7 +17,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::=
     libsoap-lite-perl libxmlrpc-lite-perl libjson-rpc-perl libjson-xs-perl libtext-csv-perl libhtml-strip-perl \
     libtext-csv-xs-perl libspreadsheet-parseexcel-perl libspreadsheet-xlsx-perl \
     liblingua-stem-snowball-perl libtheschwartz-perl \
-    libdaemon-generic-perl libhttp-server-simple-perl libnet-server-perl build-essential
+    libdaemon-generic-perl libhttp-server-simple-perl libnet-server-perl build-essential \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ADD etc /etc
 
