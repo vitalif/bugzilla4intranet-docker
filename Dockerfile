@@ -44,7 +44,7 @@ RUN mkdir /home/data && \
     cd /home && \
     git clone -b beta https://github.com/vitalif/bugzilla-4intranet bugzilla && \
     cd /home/bugzilla && \
-    mv data /home/data/bugzilla && \
+    mkdir /home/data/bugzilla && \
     chown www-data:www-data /home/data/bugzilla && \
     ln -s /home/data/bugzilla data
 
